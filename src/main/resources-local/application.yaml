@@ -1,0 +1,32 @@
+server:
+  port: 9000
+
+spring:
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: "jdbc:mariadb://localhost:3306/home"
+    username: root
+    password: rhksgh
+  output:
+    ansi:
+      enabled: always
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+
+logging:
+  level:
+    root: info
+    com:
+      khpark0203:
+        batch:
+          service: debug
+          client:  debug
+
+external:
+  goarch:
+    baseurl: "http://localhost:8000"
