@@ -1,5 +1,5 @@
 server:
-  port: 9000
+  port: 9001
 
 spring:
   profiles:
@@ -17,6 +17,35 @@ spring:
       hibernate:
         show_sql: true
         format_sql: true
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+    properties:
+      org:
+        quartz:
+          dataSource:
+            quartzDataSource:
+              driver: org.mariadb.jdbc.Driver
+              URL: "jdbc:mariadb://localhost:3306/home"
+              username: root
+              password: rhksgh
+          scheduler:
+            instanceId: AUTO
+          jobStore:
+            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+            useProperties: true
+            tablePrefix: QRTZ_
+            misfireThreshold: 60000
+            clusterCheckinInterval: 1000
+            isClustered: true
+            dataSource: quartzDataSource
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 10
+            threadPriority: 5
+            threadsInheritContextClassLoaderOfInitializingThread: true
 
 logging:
   level:
