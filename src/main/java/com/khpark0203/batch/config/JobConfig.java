@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.quartz.CronScheduleBuilder;
+import org.quartz.Job;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
@@ -44,12 +45,11 @@ public class JobConfig {
                             .build();
     }
     
-    public JobDetail runJobDetail(Class job, Map params) {
+    public JobDetail runJobDetail(Class<? extends Job> job, Map<? extends String, ? extends Object> params) {
         JobDataMap jobDataMap = new JobDataMap();
         jobDataMap.putAll(params);
 
         // 스케줄 생성
         return newJob(job).usingJobData(jobDataMap).build();
     }
-    
 }
