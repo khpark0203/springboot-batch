@@ -1,12 +1,12 @@
 server:
-  port: 9001
+  port: 8080
 
 spring:
   profiles:
     active: local
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: "jdbc:mariadb://localhost:3306/home"
+    url: jdbc:mariadb://localhost:3306/home
     username: root
     password: rhksgh
   output:
@@ -27,9 +27,10 @@ spring:
           dataSource:
             quartzDataSource:
               driver: org.mariadb.jdbc.Driver
-              URL: "jdbc:mariadb://localhost:3306/quartz"
-              username: root
+              URL: jdbc:mariadb://localhost:3306/quartz
+              user: root
               password: rhksgh
+              provider: hikaricp
           scheduler:
             instanceId: AUTO
           jobStore:
@@ -58,4 +59,4 @@ logging:
 
 external:
   goarch:
-    baseurl: "http://localhost:8000"
+    baseurl: http://localhost:8000
