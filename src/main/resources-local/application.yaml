@@ -27,7 +27,7 @@ spring:
           dataSource:
             quartzDataSource:
               driver: org.mariadb.jdbc.Driver
-              URL: "jdbc:mariadb://localhost:3306/home"
+              URL: "jdbc:mariadb://localhost:3306/quartz"
               username: root
               password: rhksgh
           scheduler:
