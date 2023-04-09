@@ -42,6 +42,7 @@ spring:
             clusterCheckinInterval: 1000
             isClustered: true
             dataSource: quartzDataSource
+            acquireTriggersWithinLock: true
           threadPool:
             class: org.quartz.simpl.SimpleThreadPool
             threadCount: 10

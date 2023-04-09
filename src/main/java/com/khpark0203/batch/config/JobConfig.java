@@ -23,13 +23,14 @@ public class JobConfig {
     
     public JobDetail runJobDetail(
         Class<? extends Job> job,
-        Map<? extends String, ? extends Object> params
+        Map<? extends String, ? extends Object> params,
+        String key
     ) {
         JobDataMap jobDataMap = new JobDataMap();
         jobDataMap.putAll(params);
 
         // 스케줄 생성
-        return newJob(job).usingJobData(jobDataMap).build();
-        // return newJob(job).usingJobData(jobDataMap).withIdentity(key).build();
+        // return newJob(job).usingJobData(jobDataMap).build();
+        return newJob(job).usingJobData(jobDataMap).withIdentity(key).build();
     }
 }
